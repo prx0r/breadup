@@ -1,0 +1,9 @@
+{
+  "name": "@breadup/scanners",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "dependencies": {
+    "@breadup/domain": "*"
+  }
+}

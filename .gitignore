@@ -6,3 +6,6 @@ node_modules/
 *.log
 dist/
 build/
+
+# large raw datasets (refetch via data/README.md)
+data/*.parquet
