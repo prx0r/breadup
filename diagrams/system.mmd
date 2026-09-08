@@ -1,0 +1,25 @@
+flowchart LR
+  UI[iOS / Web] --> API[API Gateway]
+  API --> AUTH[Auth + Policy]
+  API --> BUS[Domain Event Bus]
+  API --> SCAN[Scanner Service]
+  API --> AGENT[Agent Orchestrator]
+  API --> ENT[Entitlements]
+  SCAN --> SRC[Market / Web / Supplier Sources]
+  SCAN --> OPP[Opportunity Engine]
+  OPP --> DB[(Postgres)]
+  AGENT --> POLICY[Deterministic Action Policy]
+  POLICY --> SHOP[Shopify Adapter]
+  SHOP --> SG[Shopify GraphQL Admin]
+  SG --> WH[Webhooks]
+  WH --> BUS
+  BUS --> LEDGER[P&L Ledger]
+  LEDGER --> DB
+  ENT --> BREAD[Bread Ledger]
+  ENT --> X402[x402 Payment Adapter]
+  BREAD --> DB
+  X402 --> WALLET[Wallet / Facilitator]
+  DB --> SCORE[Badge + Scanner Score Engine]
+  SCORE --> UI
+  DB --> PUB[Public Scanner / Agent Commerce API]
+  PUB --> MCP[MCP / UCP / Agent Discovery]

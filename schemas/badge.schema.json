@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://breadup.dev/schemas/badge.schema.json",
+  "title":"BreadUp Badge Definition",
+  "type":"object",
+  "required":["id","name","version","scope","rule","minimum_evidence_tier"],
+  "properties": {
+    "id":{"type":"string"},
+    "name":{"type":"string"},
+    "version":{"type":"string"},
+    "scope":{"enum":["position","business","user","scanner"]},
+    "minimum_evidence_tier":{"enum":["E0","E1","E2","E3","E4"]},
+    "rule":{"type":"object"},
+    "explanation_template":{"type":"string"}
+  },
+  "additionalProperties": false
+}

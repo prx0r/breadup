@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://breadup.dev/schemas/ledger-event.schema.json",
+  "title":"BreadUp Ledger Event",
+  "type":"object",
+  "required":["id","business_id","type","occurred_at","currency","amount","idempotency_key","source"],
+  "properties": {
+    "id":{"type":"string"},
+    "business_id":{"type":"string"},
+    "type":{"enum":["capital.contributed","inventory.acquired","inventory.adjusted","sale.completed","fee.charged","shipping.paid","refund.issued","chargeback.received","ad.spend_recorded","scanner.purchased","creator.payable_created","creator.paid","other"]},
+    "occurred_at":{"type":"string","format":"date-time"},
+    "currency":{"type":"string"},
+    "amount":{"type":"number"},
+    "position_id":{"type":["string","null"]},
+    "order_id":{"type":["string","null"]},
+    "external_ref":{"type":["string","null"]},
+    "idempotency_key":{"type":"string"},
+    "source":{"type":"string"},
+    "evidence_refs":{"type":"array","items":{"type":"string"}},
+    "metadata":{"type":"object"}
+  },
+  "additionalProperties": false
+}

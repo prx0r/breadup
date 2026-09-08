@@ -1,0 +1,30 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://breadup.dev/schemas/scanner.schema.json",
+  "title":"BreadUp Scanner",
+  "type":"object",
+  "required":["id","name","version","creator_id","status","pricing","capabilities"],
+  "properties": {
+    "id":{"type":"string"},
+    "name":{"type":"string"},
+    "version":{"type":"string"},
+    "creator_id":{"type":"string"},
+    "parent":{"type":["object","null"]},
+    "status":{"enum":["draft","backtest","live","paused","retired"]},
+    "pricing": {
+      "type":"object",
+      "properties": {
+        "bread_per_run":{"type":["number","null"],"minimum":0},
+        "x402_usd_per_run":{"type":["number","null"],"minimum":0},
+        "reveal_bread":{"type":["number","null"],"minimum":0},
+        "creator_share_bps":{"type":"integer","minimum":0,"maximum":10000}
+      }
+    },
+    "capabilities":{"type":"array","items":{"type":"string"}},
+    "markets":{"type":"array","items":{"type":"string"}},
+    "data_sources":{"type":"array","items":{"type":"string"}},
+    "version_hash":{"type":"string"},
+    "public_metrics":{"type":"object"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,85 @@
+openapi: 3.1.0
+info:
+  title: BreadUp Public API
+  version: 0.1.0
+  description: Canonical external contract sketch for scanners, opportunities, entitlements, and business summaries.
+servers:
+  - url: https://api.breadup.dev
+paths:
+  /v1/scanners:
+    get:
+      summary: List public scanners
+      responses:
+        '200':
+          description: Scanner list
+  /v1/scanners/{scannerId}:
+    get:
+      summary: Read scanner card and verified metrics
+      parameters:
+        - in: path
+          name: scannerId
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Scanner }
+  /v1/scanners/{scannerId}/scan:
+    post:
+      summary: Run a scanner. May be protected by x402.
+      parameters:
+        - in: path
+          name: scannerId
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [query]
+              properties:
+                query: { type: object }
+      responses:
+        '200': { description: Scan result or opportunity teaser }
+        '402': { description: x402 payment required }
+  /v1/opportunities/{opportunityId}:
+    get:
+      summary: Get an entitled opportunity or public teaser
+      parameters:
+        - in: path
+          name: opportunityId
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Opportunity }
+  /v1/opportunities/{opportunityId}/reveal:
+    post:
+      summary: Spend Bread or validate external payment and create entitlement
+      parameters:
+        - in: path
+          name: opportunityId
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Entitlement plus revealed result }
+        '402': { description: Payment required }
+  /v1/businesses/{businessId}/summary:
+    get:
+      summary: Read canonical P&L and inventory summary
+      parameters:
+        - in: path
+          name: businessId
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Business summary }
+  /v1/businesses/{businessId}/proposals:
+    post:
+      summary: Ask the entrepreneur agent to create a proposal; does not itself execute external actions.
+      parameters:
+        - in: path
+          name: businessId
+          required: true
+          schema: { type: string }
+      responses:
+        '202': { description: Proposal queued }

@@ -1,0 +1,10 @@
+BreadUp Canonical Reference — validation report
+Date: 2026-09-08
+
+- JSON schema files parsed successfully.
+- Event catalog parsed successfully.
+- Node reference implementation test suite: 11/11 passed.
+- Demo executed successfully.
+- Reference formulas cover contribution profit, ROI on capital at risk, fair-value edge, expected value, inventory turnover, DIO, badge derivation, Bayesian scanner hit-rate shrinkage, Brier score, and composite Scanner Quality Score.
+
+Important production note: the reference engine uses JavaScript Number for portability. Production money ledgers should use fixed-point integers or decimal types.

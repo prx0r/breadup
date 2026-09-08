@@ -1,0 +1,9 @@
+{
+  "name":"breadup-reference",
+  "private":true,
+  "type":"module",
+  "scripts":{
+    "test":"node --test",
+    "demo":"node src/demo.mjs"
+  }
+}

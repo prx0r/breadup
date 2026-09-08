@@ -1,0 +1,27 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://breadup.dev/schemas/agent-business.schema.json",
+  "title":"BreadUp Business",
+  "type":"object",
+  "required":["id","owner_id","name","state","base_currency","capital_policy","channels"],
+  "properties": {
+    "id":{"type":"string"},
+    "owner_id":{"type":"string"},
+    "name":{"type":"string"},
+    "state":{"enum":["IDEA","SIMULATING","READY","LIVE","PAUSED","WINDING_DOWN","CLOSED"]},
+    "base_currency":{"type":"string"},
+    "capital_policy": {
+      "type":"object",
+      "required":["max_total_at_risk","max_single_action","daily_spend_cap","human_approval_above"],
+      "properties": {
+        "max_total_at_risk":{"type":"number","minimum":0},
+        "max_single_action":{"type":"number","minimum":0},
+        "daily_spend_cap":{"type":"number","minimum":0},
+        "human_approval_above":{"type":"number","minimum":0}
+      }
+    },
+    "channels":{"type":"array","items":{"type":"object","required":["type","external_account_id"],"properties":{"type":{"type":"string"},"external_account_id":{"type":"string"}}}},
+    "agent_ids":{"type":"array","items":{"type":"string"}}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,12 @@
+{
+  "version":"1.0",
+  "events":[
+    "business.created","business.state_changed","agent.proposal_created","agent.action_approved","agent.action_executed","agent.action_failed",
+    "scanner.run_started","scanner.run_completed","scanner.opportunity_emitted","scanner.result_revealed","scanner.outcome_resolved",
+    "opportunity.tracked","opportunity.expired","opportunity.committed",
+    "capital.contributed","inventory.acquired","sale.completed","fee.charged","shipping.paid","refund.issued","chargeback.received","ad.spend_recorded",
+    "bread.earned","bread.purchased","bread.spent","bread.reversed",
+    "payment.x402_requested","payment.x402_settled","payment.x402_failed","entitlement.created",
+    "badge.awarded","badge.revoked","mission.completed"
+  ]
+}
